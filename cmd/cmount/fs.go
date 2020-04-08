@@ -268,7 +268,7 @@ func (fsys *FS) Releasedir(path string, fh uint64) (errc int) {
 func (fsys *FS) Statfs(path string, stat *fuse.Statfs_t) (errc int) {
 	defer log.Trace(path, "")("stat=%+v, errc=%d", stat, &errc)
 	const blockSize = 4096
-	const fsBlocks = (1 << 50) / blockSize
+	const fsBlocks = (1 << 55) / blockSize
 	stat.Blocks = fsBlocks  // Total data blocks in file system.
 	stat.Bfree = fsBlocks   // Free blocks in file system.
 	stat.Bavail = fsBlocks  // Free blocks in file system if you're not root.
